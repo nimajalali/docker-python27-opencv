@@ -153,12 +153,24 @@ RUN apt-get update -qq && apt-get install -y --force-yes libopencv-dev
 WORKDIR /usr/local/src
 RUN mkdir -p opencv/release
 WORKDIR /usr/local/src/opencv/release
-RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
-          -D CMAKE_INSTALL_PREFIX=/usr/local \
+RUN cmake -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib/modules \
+          -D CMAKE_BUILD_TYPE=RELEASE \
+          -D BUILD_SHARED_LIBS=OFF \
+          -D WITH_FFMPEG=OFF \
+          -D BUILD_PNG=ON \
+          -D BUILD_JPEG=ON \
+          -D BUILD_ZLIB=ON \
+          -D WITH_GTK=OFF \
+          -D WITH_GTK_2_X=OFF \
+          -D WITH_1394=OFF \
+          -D WITH_V4L=OFF \
+          -D WITH_LIBV4L=OFF \
           -D WITH_TBB=ON \
-          -D BUILD_PYTHON_SUPPORT=ON \
-          -D WITH_V4L=ON \
-          -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib/modules \
+          -D BUILD_PYTHON_SUPPORT=OFF \
+          -D BUILD_DOCS=OFF \
+          -D BUILD_TESTS=OFF \
+          -D BUILD_PERF_TESTS=OFF \
+          -D CMAKE_INSTALL_PREFIX=/usr/local \
           ..
 
 RUN make -j4
@@ -203,4 +215,4 @@ RUN rm -rf /usr/local/src
 
 # Install pip
 # =================================
-RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python
+#RUN curl --silent --show-error --retry 5 https://bootstrap.pypa.io/get-pip.py | python
