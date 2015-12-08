@@ -158,7 +158,7 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D WITH_TBB=ON \
           -D BUILD_PYTHON_SUPPORT=ON \
           -D WITH_V4L=ON \
-          -D OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules \
+          -D OPENCV_EXTRA_MODULES_PATH=/usr/local/src/opencv_contrib/modules \
           ..
 
 RUN make -j4
