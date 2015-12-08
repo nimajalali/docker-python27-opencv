@@ -45,8 +45,8 @@ RUN echo deb http://archive.ubuntu.com/ubuntu precise universe multiverse >> /et
     libswscale-dev \
     libdc1394-22-dev \
     libxine-dev \
-    libgstreamer0.10-dev \
-    libgstreamer-plugins-base0.10-dev \
+    libgstreamer1.0-dev \
+    libgstreamer-plugins-base1.0-dev \
     libv4l-dev \
     libtbb-dev \
     libgtk2.0-dev \
