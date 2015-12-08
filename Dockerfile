@@ -174,7 +174,8 @@ RUN apt-get update -qq && apt-get install -y --force-yes \
     libass-dev
 
 WORKDIR /usr/local/src/ffmpeg
-RUN ./configure --extra-libs="-ldl" \
+RUN ./configure --pkg-config-flags="--static" \
+            --extra-libs="-ldl" \
             --enable-gpl \
             --enable-libass \
             --enable-libfdk-aac \
