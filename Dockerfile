@@ -1,4 +1,4 @@
-FROM ubuntu:trusty
+FROM centos:6.7
 
 # https://github.com/ampervue/docker-python27-opencv
 
