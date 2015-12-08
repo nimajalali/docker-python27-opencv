@@ -98,7 +98,7 @@ RUN make install
 # Build L-SMASH
 # =================================
 WORKDIR /usr/local/src/l-smash
-RUN ./configure --enable-static
+RUN ./configure
 RUN make -j 4
 RUN make install
 # =================================
