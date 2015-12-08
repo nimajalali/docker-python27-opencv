@@ -20,7 +20,7 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN apt-get -qq remove ffmpeg
+#RUN apt-get -qq remove ffmpeg
 
 RUN echo deb http://archive.ubuntu.com/ubuntu precise universe multiverse >> /etc/apt/sources.list; \
     apt-get update -qq && apt-get install -y --force-yes \
@@ -76,7 +76,7 @@ WORKDIR /usr/local/src
 RUN git clone --depth 1 https://github.com/l-smash/l-smash
 RUN git clone --depth 1 git://git.videolan.org/x264.git
 RUN hg clone https://bitbucket.org/multicoreware/x265
-RUN git clone --depth 1 git://source.ffmpeg.org/ffmpeg
+#RUN git clone --depth 1 git://source.ffmpeg.org/ffmpeg
 RUN git clone https://github.com/Itseez/opencv.git
 RUN git clone https://github.com/Itseez/opencv_contrib.git
 RUN git clone --depth 1 git://github.com/mstorsjo/fdk-aac.git
@@ -170,28 +170,28 @@ RUN ldconfig
 
 # Build ffmpeg.
 # =================================
-RUN apt-get update -qq && apt-get install -y --force-yes \
-    libass-dev
+#RUN apt-get update -qq && apt-get install -y --force-yes \
+#    libass-dev
 
-WORKDIR /usr/local/src/ffmpeg
-RUN ./configure --pkg-config-flags="--static" \
-            --extra-libs="-ldl" \
-            --enable-gpl \
-            --enable-libass \
-            --enable-libfdk-aac \
-            --enable-libfontconfig \
-            --enable-libfreetype \
-            --enable-libfribidi \
-            --enable-libmp3lame \
-            --enable-libopus \
-            --enable-libtheora \
-            --enable-libvorbis \
-            --enable-libvpx \
-            --enable-libx264 \
-            --enable-libx265 \
-            --enable-nonfree
-RUN make -j 4
-RUN make install
+#WORKDIR /usr/local/src/ffmpeg
+#RUN ./configure --pkg-config-flags="--static" \
+#            --extra-libs="-ldl" \
+#            --enable-gpl \
+#            --enable-libass \
+#            --enable-libfdk-aac \
+#            --enable-libfontconfig \
+#            --enable-libfreetype \
+#            --enable-libfribidi \
+#            --enable-libmp3lame \
+#            --enable-libopus \
+#            --enable-libtheora \
+#            --enable-libvorbis \
+#            --enable-libvpx \
+#            --enable-libx264 \
+#            --enable-libx265 \
+#            --enable-nonfree
+#RUN make -j 4
+#RUN make install
 # =================================
 
 
