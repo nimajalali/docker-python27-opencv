@@ -89,7 +89,7 @@ RUN tar xzvf yasm-${YASM_VERSION}.tar.gz
 # Build YASM
 # =================================
 WORKDIR /usr/local/src/yasm-${YASM_VERSION}
-RUN ./configure
+RUN ./configure --enable-static
 RUN make -j 4
 RUN make install
 # =================================
@@ -98,7 +98,7 @@ RUN make install
 # Build L-SMASH
 # =================================
 WORKDIR /usr/local/src/l-smash
-RUN ./configure
+RUN ./configure --enable-static
 RUN make -j 4
 RUN make install
 # =================================
@@ -116,7 +116,9 @@ RUN make install
 # Build libx265
 # =================================
 WORKDIR  /usr/local/src/x265/build/linux
-RUN cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr ../../source
+RUN cmake -D CMAKE_INSTALL_PREFIX:PATH=/usr \
+          -D BUILD_SHARED_LIBS=OFF \
+          ../../source
 RUN make -j 4
 RUN make install
 # =================================
@@ -125,7 +127,7 @@ RUN make install
 # =================================
 WORKDIR /usr/local/src/fdk-aac
 RUN autoreconf -fiv
-RUN ./configure --disable-shared
+RUN ./configure --disable-shared --enable-static
 RUN make -j 4
 RUN make install
 # =================================
@@ -133,7 +135,7 @@ RUN make install
 # Build libvpx
 # =================================
 WORKDIR /usr/local/src/libvpx
-RUN ./configure --disable-examples
+RUN ./configure --disable-examples --enable-static
 RUN make -j 4
 RUN make install
 # =================================
@@ -142,7 +144,7 @@ RUN make install
 # =================================
 WORKDIR /usr/local/src/opus
 RUN ./autogen.sh
-RUN ./configure --disable-shared
+RUN ./configure --disable-shared --enable-static
 RUN make -j 4
 RUN make install
 # =================================
